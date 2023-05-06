@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.List;
 
 public class TodoDAOTests {
     private TodoDAO todoDAO;
@@ -34,5 +35,11 @@ public class TodoDAOTests {
                 .build();
 
         todoDAO.insert(todoVO);
+    }
+
+    @Test
+    public void testList() throws Exception {
+        List<TodoVO> list = todoDAO.selectAll();
+        list.forEach(vo -> System.out.println(vo));
     }
 }
